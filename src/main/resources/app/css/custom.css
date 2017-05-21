@@ -1,0 +1,50 @@
+.account-wall {
+	margin-top: 20px;
+}
+
+.login-title {
+	color: #555;
+	font-size: 18px;
+	font-weight: 400;
+	display: block;
+}
+
+.profile-img {
+	width: 306px;
+	height: 80px;
+	margin: 0 auto 10px;
+	display: block;
+}
+
+body {
+	background:
+		url('/img/izettle.jpg')
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.distance {
+	margin-top: 10px;
+}
+
+.loginwell {
+    background-color: rgba(232, 232, 232, 0.79);
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.modal-header {
+	background-color: #1E6A8D;
+}
+
+.whiteText {
+	color: white;
+}

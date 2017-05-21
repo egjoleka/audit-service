@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Two Legged OAUTH2 Authentication Controller API
+	documentation</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator"
+	content="https://github.com/kevinrenskers/raml2html 2.1.0">
+<link rel="stylesheet"
+	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript"
+	src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+<script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          if(history && history.replaceState) {
+            history.replaceState({}, '', '#');
+          }
+        });
+      });
+    </script>
+<style>
+.hljs {
+	background: transparent;
+}
+
+.parent {
+	color: #999;
+}
+
+.list-group-item>.badge {
+	float: none;
+	margin-right: 6px;
+}
+
+.panel-title>.methods {
+	float: right;
+}
+
+.badge {
+	border-radius: 0;
+	text-transform: uppercase;
+	width: 70px;
+	font-weight: normal;
+	color: #f3f3f6;
+	line-height: normal;
+}
+
+.badge_get {
+	background-color: #63a8e2;
+}
+
+.badge_post {
+	background-color: #6cbd7d;
+}
+
+.badge_put {
+	background-color: #22bac4;
+}
+
+.badge_delete {
+	background-color: #d26460;
+}
+
+.badge_patch {
+	background-color: #ccc444;
+}
+
+.list-group, .panel-group {
+	margin-bottom: 0;
+}
+
+.panel-group .panel+.panel-white {
+	margin-top: 0;
+}
+
+.panel-group .panel-white {
+	border-bottom: 1px solid #F5F5F5;
+	border-radius: 0;
+}
+
+.panel-white:last-child {
+	border-bottom-color: white;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.panel-white .panel-heading {
+	background: white;
+}
+
+.tab-pane ul {
+	padding-left: 2em;
+}
+
+.tab-pane h2 {
+	font-size: 1.2em;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #ddd;
+}
+
+.tab-pane h3 {
+	font-size: 1.1em;
+}
+
+.tab-content {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 10px;
+}
+
+#sidebar {
+	margin-top: 30px;
+	padding-right: 5px;
+	overflow: auto;
+	height: 90%;
+}
+
+.top-resource-description {
+	border-bottom: 1px solid #ddd;
+	background: #fcfcfc;
+	padding: 15px 15px 0 15px;
+	margin: -15px -15px 10px -15px;
+}
+
+.resource-description {
+	border-bottom: 1px solid #fcfcfc;
+	background: #fcfcfc;
+	padding: 15px 15px 0 15px;
+	margin: -15px -15px 10px -15px;
+}
+
+.resource-description p:last-child {
+	margin: 0;
+}
+
+.list-group .badge {
+	float: left;
+}
+
+.method_description {
+	margin-left: 85px;
+}
+
+.method_description p:last-child {
+	margin: 0;
+}
+
+.list-group-item {
+	cursor: pointer;
+}
+
+.list-group-item:hover {
+	background-color: #f5f5f5;
+}
+</style>
+</head>
+<body data-spy="scroll" data-target="#sidebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9" role="main">
+				<div class="page-header">
+					<h1>Two Legged OAUTH2 Authentication Controller API
+						documentation</h1>
+					<p>http://dc11dev01.dc11.digitalriver.com:9201</p>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 id="oauth2_status" class="panel-title">/oauth2/status</h3>
+					</div>
+					<div class="panel-body">
+						<div class="panel-group">
+							<div class="panel panel-white">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											href="#panel_oauth2_status"><span class="parent"></span>/oauth2/status</a>
+										<span class="methods"><a href="#oauth2_status_get"><span
+												class="badge badge_get">get</span></a></span>
+									</h4>
+								</div>
+								<div id="panel_oauth2_status" class="panel-collapse collapse">
+									<div class="panel-body">
+										<div class="list-group">
+											<div onclick="window.location.href = '#oauth2_status_get'"
+												class="list-group-item">
+												<span class="badge badge_get">get</span>
+												<div class="method_description">
+													<p>Status API for load balancer.</p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal fade" tabindex="0" id="oauth2_status_get">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">
+													<span class="badge badge_get">get</span> <span
+														class="parent"></span>/oauth2/status
+												</h4>
+											</div>
+											<div class="modal-body">
+												<div class="alert alert-info">
+													<p>Status API for load balancer.</p>
+												</div>
+												<ul class="nav nav-tabs">
+													<li><a href="#oauth2_status_get_response"
+														data-toggle="tab">Response</a></li>
+												</ul>
+												<div class="tab-content">
+													<div class="tab-pane" id="oauth2_status_get_response">
+														<h2>
+															HTTP status code <a href="http://httpstatus.es/200"
+																target="_blank">200</a>
+														</h2>
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/xml</strong>
+														</p>
+														<p>
+															<strong>Example</strong>:
+														</p>
+														<pre>
+															<code>&lt;Status&gt;UP&lt;/Status&gt;        
+</code>
+														</pre>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 id="oauth2_tokens" class="panel-title">/oauth2/tokens</h3>
+					</div>
+					<div class="panel-body">
+						<div class="panel-group">
+							<div class="panel panel-white">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											href="#panel_oauth2_tokens"><span class="parent"></span>/oauth2/tokens</a>
+										<span class="methods"><a href="#oauth2_tokens_post"><span
+												class="badge badge_post">post</span></a></span>
+									</h4>
+								</div>
+								<div id="panel_oauth2_tokens" class="panel-collapse collapse">
+									<div class="panel-body">
+										<div class="list-group">
+											<div onclick="window.location.href = '#oauth2_tokens_post'"
+												class="list-group-item">
+												<span class="badge badge_post">post</span>
+												<div class="method_description">
+													<p>Create a bearer token given an encoded JWT</p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal fade" tabindex="0" id="oauth2_tokens_post">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">
+													<span class="badge badge_post">post</span> <span
+														class="parent"></span>/oauth2/tokens
+												</h4>
+											</div>
+											<div class="modal-body">
+												<div class="alert alert-info">
+													<p>Create a bearer token given an encoded JWT</p>
+												</div>
+												<ul class="nav nav-tabs">
+													<li class="active"><a
+														href="#oauth2_tokens_post_request" data-toggle="tab">Request</a></li>
+													<li><a href="#oauth2_tokens_post_response"
+														data-toggle="tab">Response</a></li>
+												</ul>
+												<div class="tab-content">
+													<div class="tab-pane active"
+														id="oauth2_tokens_post_request">
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/x-www-form-urlencoded</strong>
+														</p>
+														<strong>Form Parameters</strong>
+														<ul>
+															<li><strong>jwt</strong>: <em>required (string)</em>
+															<p>base 64 encoded JWT</p>
+																<p>
+																	<strong>Example</strong>:
+																</p>
+																<pre>eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.eyJpc3MiOiAiZWRyaW4iLCAiYXVkIjogImRyd3AiLCAiaWF0IjogIjE0MDY4MTQyMDQiLCAiZXhwIjogIjE0MDY4MTQ1MDQiLCAiZGV2aWQiOiAidGVzdERldmljZSIsICJzY29wZSI6ICIvc3RvcmVUb2tlbiJ9.YRutuJpAugVxmsNW1Equmh4aj_h6GjE7LdSo9CgBst4NbTU7WtKy4nX0JYw0i5sdK9rWy4HzaDQvG8RoWiT3yg</pre></li>
+														</ul>
+													</div>
+													<div class="tab-pane" id="oauth2_tokens_post_response">
+														<h2>
+															HTTP status code <a href="http://httpstatus.es/201"
+																target="_blank">201</a>
+														</h2>
+														<p>The response of the API is an object that contains
+															the following fields.</p>
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/json</strong>
+														</p>
+														<p>
+															<strong>Example</strong>:
+														</p>
+														<pre>
+															<code>{
+"access_token": "b6afc7894e30fa3d58b319c4aca4f58dd3173bbf",
+"token_type": "Bearer",
+"expires_in": 10000,
+"number_of_retries": 10
+"secret_key": "mo_Kab-u6mMtBYmgQjnh8w",
+"initialization_vector": "inxc42CYDS6OckBfHNxzxQ"
+}
+</code>
+														</pre>
+														<h2>
+															HTTP status code <a href="http://httpstatus.es/400"
+																target="_blank">400</a>
+														</h2>
+														<p>Note, Pattern will be same however error codes may
+															differ depending on the error.</p>
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/json</strong>
+														</p>
+														<p>
+															<strong>Example</strong>:
+														</p>
+														<pre>
+															<code>{
+  "error":"invalid_request",
+  "error_description":"refreshToken must not be empty"
+}
+</code>
+														</pre>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 id="v2_oauth2_tokens" class="panel-title">/v2/oauth2/tokens</h3>
+					</div>
+					<div class="panel-body">
+						<div class="panel-group">
+							<div class="panel panel-white">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											href="#panel_v2_oauth2_tokens"><span class="parent"></span>/v2/oauth2/tokens</a>
+										<span class="methods"><a href="#v2_oauth2_tokens_post"><span
+												class="badge badge_post">post</span></a></span>
+									</h4>
+								</div>
+								<div id="panel_v2_oauth2_tokens" class="panel-collapse collapse">
+									<div class="panel-body">
+										<div class="list-group">
+											<div
+												onclick="window.location.href = '#v2_oauth2_tokens_post'"
+												class="list-group-item">
+												<span class="badge badge_post">post</span>
+												<div class="method_description">
+													<p>Create a bearer token given an encoded JWT. V2 api
+														will allow the scope fields of JWT to contain also the
+														operation</p>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal fade" tabindex="0" id="v2_oauth2_tokens_post">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">
+													<span class="badge badge_post">post</span> <span
+														class="parent"></span>/v2/oauth2/tokens
+												</h4>
+											</div>
+											<div class="modal-body">
+												<div class="alert alert-info">
+													<p>Create a bearer token given an encoded JWT. V2 api
+														will allow the scope fields of JWT to contain also the
+														operation</p>
+												</div>
+												<ul class="nav nav-tabs">
+													<li class="active"><a
+														href="#v2_oauth2_tokens_post_request" data-toggle="tab">Request</a></li>
+													<li><a href="#v2_oauth2_tokens_post_response"
+														data-toggle="tab">Response</a></li>
+												</ul>
+												<div class="tab-content">
+													<div class="tab-pane active"
+														id="v2_oauth2_tokens_post_request">
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/x-www-form-urlencoded</strong>
+														</p>
+														<strong>Form Parameters</strong>
+														<ul>
+															<li><strong>jwt</strong>: <em>required (string)</em>
+															<p>base 64 encoded JWT</p>
+																<p>
+																	<strong>Example</strong>:
+																</p>
+																<pre>eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.eyJpc3MiOiAiZWRyaW4iLCAiYXVkIjogImRyd3AiLCAiaWF0IjogIjE0MDY4MTQyMDQiLCAiZXhwIjogIjE0MDY4MTQ1MDQiLCAiZGV2aWQiOiAidGVzdERldmljZSIsICJzY29wZSI6ICIvc3RvcmVUb2tlbiJ9.YRutuJpAugVxmsNW1Equmh4aj_h6GjE7LdSo9CgBst4NbTU7WtKy4nX0JYw0i5sdK9rWy4HzaDQvG8RoWiT3yg</pre></li>
+														</ul>
+													</div>
+													<div class="tab-pane" id="v2_oauth2_tokens_post_response">
+														<h2>
+															HTTP status code <a href="http://httpstatus.es/201"
+																target="_blank">201</a>
+														</h2>
+														<p>The response of the API is an object that contains
+															the following fields.</p>
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/json</strong>
+														</p>
+														<p>
+															<strong>Example</strong>:
+														</p>
+														<pre>
+															<code>{
+"access_token": "b6afc7894e30fa3d58b319c4aca4f58dd3173bbf",
+"token_type": "Bearer",
+"expires_in": 10000,
+"number_of_retries": 10
+"secret_key": "mo_Kab-u6mMtBYmgQjnh8w",
+"initialization_vector": "inxc42CYDS6OckBfHNxzxQ"
+}
+</code>
+														</pre>
+														<h2>
+															HTTP status code <a href="http://httpstatus.es/400"
+																target="_blank">400</a>
+														</h2>
+														<p>Note, Pattern will be same however error codes may
+															differ depending on the error.</p>
+														<h3>Body</h3>
+														<p>
+															<strong>Type: application/json</strong>
+														</p>
+														<p>
+															<strong>Example</strong>:
+														</p>
+														<pre>
+															<code>{
+  "error":"invalid_request",
+  "error_description":"refreshToken must not be empty"
+}</code>
+														</pre>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div id="sidebar" class="hidden-print affix" role="complementary">
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href="#oauth2_status">/oauth2/status</a></li>
+						<li><a href="#oauth2_tokens">/oauth2/tokens</a></li>
+						<li><a href="#v2_oauth2_tokens">/v2/oauth2/tokens</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

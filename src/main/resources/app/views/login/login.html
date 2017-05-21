@@ -1,0 +1,99 @@
+<div>
+	<div class="col-sm-6 col-md-4 col-md-offset-4">
+		<div id="alert_placeholder"></div>
+		<div ng-if="!isValidRequest">
+			<div
+				class="col-sm-6 col-md-4 col-md-offset-4 alert alert-danger text-center alert-dismissible">
+				Invalid link!</div>
+		</div>
+		<div ng-show="error_description" id="alert_placeholder">
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<p class="text-center">{{error_description}}</p>
+			</div>
+		</div>
+		<div ng-show="success">
+			<div class="alert alert-info">
+				<p class="text-center">{{bearerValue}}</p>
+			</div>
+		</div>
+		<div class="account-wall" ng-if="isValidRequest">
+			<img class="profile-img center-block" src="/img/logo.png" alt="">
+			<div class="col-md-offset-2 col-md-9 text-center whiteText">
+				<h3>Sign in to continue</h3>
+			</div>
+			<div class="form-group" ng-if="showUsernameDiv">
+				<form name="userSubForm" novalidate>
+					<div class="col-md-offset-2 col-md-9 form-horizontal loginwell">
+						<div class="form-group col-md-offset-5 form-horizontal"></div>
+						<div class="form-group col-md-offset-5 form-horizontal"></div>
+						<div class="form-group col-md-offset-5 form-horizontal">
+							<img src="/img/userIcon.png" class="img-circle center-block"
+								width="100" height="100">
+						</div>
+						<div class="form-group col-md-offset-5 form-horizontal"></div>
+						<div class="input-group distance">
+							<span class="input-group-addon"> <span
+								class="glyphicon glyphicon-user"></span></span> <input type="email"
+								class="form-control input-lg" ng-model="username"
+								placeholder="Enter your email" required autocomplete="off"
+								autofocus>
+						</div>
+						<button type="submit" ng-disabled="!userSubForm.$valid"
+							class="btn btn-lg btn-primary btn-block distance"
+							ng-click="showPassword(username)">
+							Next&nbsp;&nbsp;<span
+								class="glyphicon glyphicon glyphicon-chevron-right"
+								aria-hidden="true"></span>
+						</button>
+						<a id="register" href="{{registerLink}}"
+							class="pull-right need-help distance">Not yet our user? </a><span
+							class="clearfix"></span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div ng-if="!showUsernameDiv">
+			<div autocomplete="off"
+				class="col-md-offset-2 col-md-9 form-horizontal loginwell">
+				<div>
+					<button ng-click="backToUsernameView()"
+						class="btn btn-lg btn-primary btn-sm">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</button>
+				</div>
+				<div class="form-group col-md-offset-5 form-horizontal">
+					<img src="/img/userIcon.png" class="img-circle center-block"
+						width="100" height="100">
+				</div>
+				<div class="form-group col-md-offset-5 form-horizontal"></div>
+				<div>
+					<div class="text-center text-info">
+						<h4>
+							<strong>{{username}}</strong>
+						</h4>
+					</div>
+					<form name="pwdSubForm" novalidate>
+						<div class="input-group distance">
+							<span class="input-group-addon"> <span
+								class="glyphicon glyphicon-lock"></span>
+							</span> 
+							<input id="passwordId" type="password" class="form-control input-lg"
+								name="password" placeholder="Password" required
+								autofocus autocomplete="off" ng-model="password"
+								ng-minlength="8">
+						</div>
+						<button type="submit" ng-disabled="!pwdSubForm.$valid"
+							class="btn btn-lg btn-primary btn-block distance"
+							ng-click="login(username, password)">
+							Sign in &nbsp;&nbsp; <span class="glyphicon glyphicon-log-in"
+								aria-hidden="true"></span>
+						</button>
+						<a id="forgotPasswordLink" href="/#/audits/start"
+							class="pull-right need-help distance">Wanna See Audits? </a><span
+							class="clearfix"></span>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
