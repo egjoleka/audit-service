@@ -1,4 +1,4 @@
-#How to run the application
+# How to run the application
 
 1.Download cassandra from datastax
 https://academy.datastax.com/planet-cassandra/cassandra
@@ -29,20 +29,34 @@ bin/nodetool drain
 bin/cqlsh
 
 
-#Features
+# Features
+
 1.Register User
+
 2.User login
+
 3.View Audits
+
 4.Password Policy(Strength, length, similarity, encryption PBDFK2)
+
 5.API documentation RAML
+
 6.HTTP client to consume the API(build the project, grab the jar and just import in client application)
+
 7.AngularJS UI app boundled inside(not fully completed as time did not permit)
 
-#Technologies used
+# Technologies used
+
 1.Java8
+
 2.Gradle
+
 3.Cassandra(production)(DSE latest)
+
 4.Embedded Cassandra(Testing/JUNIT)(2.1.x)
+
 5.Embedded Jetty
+
 6.REST(CXF)
+
 7.GIT
