@@ -1,5 +1,7 @@
 package com.izettle.assignment.service;
 
+import static com.izettle.assignment.utils.ArgumentVerifier.verifyNotNull;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +17,8 @@ public class AuditsService {
 	private LoginAuditsDao loginAuditsDao;
 	
 	public AuditsService(IssuedBearerTokenDao issuedBearerTokenDao, LoginAuditsDao loginAuditsDao) {
+		verifyNotNull(loginAuditsDao);
+		verifyNotNull(issuedBearerTokenDao);
 		this.issuedBearerTokenDao = issuedBearerTokenDao;
 		this.loginAuditsDao = loginAuditsDao;
 	}

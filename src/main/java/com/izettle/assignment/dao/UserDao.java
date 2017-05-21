@@ -1,6 +1,7 @@
 package com.izettle.assignment.dao;
 
 import static com.datastax.driver.core.querybuilder.QueryBuilder.eq;
+import static com.izettle.assignment.utils.ExceptionCreator.*;
 
 import java.sql.Timestamp;
 
@@ -49,13 +50,13 @@ public class UserDao extends AbstractDao {
 		final int totalFound = res.getAvailableWithoutFetching();
 		if (totalFound < 1) {
 			cLogger.info("User {} does not exist", userName);
-			ExceptionCreator.throwBadRequestException("Not a valid user: " + userName);
+			throwBadRequestException("Not a valid user: " + userName);
 		}
 
 		final Row row = res.all().get(0);
 		if (!row.getBool(IS_ACTIVE_USER)) {
 			cLogger.info("User {} is not an active user", userName);
-			ExceptionCreator.throwBadRequestException("Not an valid user: " + userName);
+			throwBadRequestException("Not an valid user: " + userName);
 		}
 		cLogger.debug("UserEntity fetched successfully from database. The user ID: {}", userName);
 		return createUserEntityFromDbResponse(row);

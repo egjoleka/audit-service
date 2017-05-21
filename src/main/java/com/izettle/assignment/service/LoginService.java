@@ -1,11 +1,14 @@
 package com.izettle.assignment.service;
 
 import static com.izettle.assignment.utils.ArgumentVerifier.verifyNotNull;
-import static com.izettle.assignment.utils.ExceptionCreator.*;
+import static com.izettle.assignment.utils.ExceptionCreator.throwBadRequestException;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +23,8 @@ import com.izettle.assignment.ddo.UserDisplayEntity;
 import com.izettle.assignment.entity.IssuedBearerToken;
 import com.izettle.assignment.entity.LoginAudit;
 import com.izettle.assignment.entity.User;
+import com.izettle.assignment.exception.IzettleException;
 import com.izettle.assignment.utils.BearerRandomGenerator;
-import com.izettle.assignment.utils.ExceptionCreator;
 import com.izettle.assignment.utils.IzettleUtils;
 
 public class LoginService {
@@ -96,11 +99,7 @@ public class LoginService {
 		final LoginAudit successAudit = LoginAudit.createInstance(username, AppConstants.LOGIN_AUDIT_FAILED,
 				INVALID_LOGIN, INVALID_LOGIN, Boolean.FALSE);
 		loginAuditsDao.store(successAudit);
-		throwUnauthorizedException("Unauthorized!" + INVALID_LOGIN);
-
-		// will never reach here
-		return null;
-
+		throw new IzettleException(Response.status(Status.UNAUTHORIZED).entity(INVALID_LOGIN).build());
 	}
 
 	private Timestamp getNowTimestamp() {
