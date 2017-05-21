@@ -1,6 +1,3 @@
-/*
- * Copyright 2014 Digital River World Payments AB.
- */
 package com.izettle.assignment.utils;
 
 import org.cassandraunit.CassandraCQLUnit;

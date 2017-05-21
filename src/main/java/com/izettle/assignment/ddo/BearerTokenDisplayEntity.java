@@ -1,11 +1,9 @@
 package com.izettle.assignment.ddo;
 
-import java.sql.Timestamp;
-
 public class BearerTokenDisplayEntity {
 
 	private String bearerToken;
-	private Timestamp expirationTimestamp;
+	private String expirationTimestamp;
 
 	public BearerTokenDisplayEntity() {
 		//cxf needs it
@@ -19,15 +17,15 @@ public class BearerTokenDisplayEntity {
 		this.bearerToken = bearerToken;
 	}
 
-	public Timestamp getExpirationTimestamp() {
+	public String getExpirationTimestamp() {
 		return expirationTimestamp;
 	}
 
-	public void setExpirationTimestamp(Timestamp expirationTimestamp) {
+	public void setExpirationTimestamp(String expirationTimestamp) {
 		this.expirationTimestamp = expirationTimestamp;
 	}
 
-	public BearerTokenDisplayEntity(String bearerToken, Timestamp expirationTimestamp) {
+	public BearerTokenDisplayEntity(String bearerToken, String expirationTimestamp) {
 		this.bearerToken = bearerToken;
 		this.expirationTimestamp = expirationTimestamp;
 	}

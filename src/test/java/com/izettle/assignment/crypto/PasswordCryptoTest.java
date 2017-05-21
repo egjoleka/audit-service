@@ -150,7 +150,7 @@ public class PasswordCryptoTest {
             PasswordCrypto.validatePassword(USER_NAME, "!0edrin!0", FIELD_NAME);
             Assert.fail("should have failed");
         } catch (IzettleException ex) {
-            assertBadRequestExceptionResponse(ex.getResponse(), "Password should not be similar to user name");
+            assertBadRequestExceptionResponse(ex.getResponse(), "Password is not strong enough, should include lower case, upper case, digit and special characters");
         }
     }
 

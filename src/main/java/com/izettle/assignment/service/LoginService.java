@@ -94,11 +94,12 @@ public class LoginService {
 			final LoginAudit successAudit = LoginAudit.createInstance(username, AppConstants.LOGIN_AUDIT_SUCCESS,
 					AppConstants.OK, uniqueToken, Boolean.TRUE);
 			loginAuditsDao.store(successAudit);
-			return new BearerTokenDisplayEntity(uniqueToken, issuedBearerToken.getExpirationTime());
+			return new BearerTokenDisplayEntity(uniqueToken, issuedBearerToken.getExpirationTime().toString());
 		}
 		final LoginAudit successAudit = LoginAudit.createInstance(username, AppConstants.LOGIN_AUDIT_FAILED,
 				INVALID_LOGIN, INVALID_LOGIN, Boolean.FALSE);
 		loginAuditsDao.store(successAudit);
+		logger.error(INVALID_LOGIN);
 		throw new IzettleException(Response.status(Status.UNAUTHORIZED).entity(INVALID_LOGIN).build());
 	}
 

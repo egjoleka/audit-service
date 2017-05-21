@@ -36,7 +36,7 @@ import com.izettle.assignment.utils.BearerRandomGenerator;
 public class IzettleAssignmentMain {
 
 	static Logger cLogger = LoggerFactory.getLogger(IzettleAssignmentMain.class);
-	private final static int REST_PORT = 9023;
+	public final static int REST_PORT = 9023;
 
 	public static final SimpleTxGate txGate = new SimpleTxGate();
 

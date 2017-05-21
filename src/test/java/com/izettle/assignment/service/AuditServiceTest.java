@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ws.rs.BadRequestException;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +41,12 @@ public class AuditServiceTest {
 		Mockito.when(issuedBearerTokenDao.getBearerTokensByBearerTokenId(BEARER)).thenReturn(issuedBearerToken);
 		Mockito.when(loginAuditsDao.getLoginAuditsByUsernameAndStatus(USERNAME, Boolean.TRUE)).thenReturn(audits);
 		auditsService = new AuditsService(issuedBearerTokenDao, loginAuditsDao);
+	}
+	
+	@After
+	public void reset() {
+		Mockito.reset(issuedBearerTokenDao);
+		Mockito.reset(loginAuditsDao);
 	}
 
 	protected void createTestBearerToken() {
