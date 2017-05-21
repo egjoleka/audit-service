@@ -1,0 +1,49 @@
+#%RAML 0.8
+title: Login Controller
+baseUri: http:localhost:9023
+protocols: [ HTTP ]
+/auth/status: 
+        get: 
+          description: Status API for load balancer.
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  example: |
+                    Status:UP        
+      
+/auth/verification: 
+      post:
+        description: Get back a bearer token
+        body: 
+            application/x-www-form-urlencoded: 
+              formParameters: 
+                user:
+                  description: username
+                  type: string
+                  required: true
+                  example: gjolekae@gmail.com
+                user:
+                  description: password
+                  type: string
+                  required: true
+                  example: letshire
+        responses: 
+              201: 
+                 description: The response of the API is an object that contains the following fields.
+                 body:  
+                  application/json: 
+                    example: | 
+                      {
+                      "bearerToken": "b6afc7894e30fa3d58b319c4aca4f58dd3173bbf",
+                      "expirationTimestamp": "15666666666666"
+                      }
+              400:
+                  description: Note, Pattern will be same however error codes may differ depending on the error. 
+                  body:
+                    application/json:
+                      example: |
+                        {
+                          "error":"invalid_request",
+                          "error_description":"password must not be empty"
+                        }
