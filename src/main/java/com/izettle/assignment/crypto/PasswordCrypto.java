@@ -104,14 +104,15 @@ public class PasswordCrypto {
 		if (StringUtils.isBlank(password)) {
 			throwBadRequestException(field + " cannot be null or empty");
 		}
+		String message = field + " should not be similar to user name";
 		if (password.equalsIgnoreCase(userName)) {
-			throwBadRequestException(field + " should not be similar to user name");
+			throwBadRequestException(message);
 		}
 		final int length = password.length();
 		for (int i = 0; i < length - 4; i++) {
 			String sub = password.substring(i, i + 5);
 			if (userName.indexOf(sub) > -1) {
-				throwBadRequestException(field + " should not be similar to user name");
+				throwBadRequestException(message);
 			}
 		}
 	}

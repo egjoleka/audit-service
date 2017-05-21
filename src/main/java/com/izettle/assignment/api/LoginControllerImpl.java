@@ -7,7 +7,6 @@ import static com.izettle.assignment.utils.IzettleUtils.validateLength;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.cxf.interceptor.InInterceptors;

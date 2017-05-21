@@ -8,7 +8,7 @@ public class BearerTokenDisplayEntity {
 	private Timestamp expirationTimestamp;
 
 	public BearerTokenDisplayEntity() {
-
+		//cxf needs it
 	}
 
 	public String getBearerToken() {

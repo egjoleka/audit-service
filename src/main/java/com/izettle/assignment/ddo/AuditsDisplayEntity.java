@@ -9,7 +9,7 @@ public class AuditsDisplayEntity {
 	private List<LoginAudit> loginAudits;
 
 	public AuditsDisplayEntity() {
-
+     //cxf needs it
 	}
 
 	public AuditsDisplayEntity(List<LoginAudit> loginAudits) {

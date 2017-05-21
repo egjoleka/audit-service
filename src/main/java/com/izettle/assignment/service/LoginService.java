@@ -1,5 +1,8 @@
 package com.izettle.assignment.service;
 
+import static com.izettle.assignment.utils.ArgumentVerifier.verifyNotNull;
+import static com.izettle.assignment.utils.ExceptionCreator.*;
+
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
@@ -17,7 +20,6 @@ import com.izettle.assignment.ddo.UserDisplayEntity;
 import com.izettle.assignment.entity.IssuedBearerToken;
 import com.izettle.assignment.entity.LoginAudit;
 import com.izettle.assignment.entity.User;
-import com.izettle.assignment.utils.ArgumentVerifier;
 import com.izettle.assignment.utils.BearerRandomGenerator;
 import com.izettle.assignment.utils.ExceptionCreator;
 import com.izettle.assignment.utils.IzettleUtils;
@@ -35,11 +37,11 @@ public class LoginService {
 	public LoginService(final IssuedBearerTokenDao issuedBearerTokenDao, final LoginAuditsDao loginAuditsDao,
 			final UserDao userDao, final BearerRandomGenerator tokenBearerGenerator,
 			final PasswordCrypto passwordCrypto) {
-		ArgumentVerifier.verifyNotNull(issuedBearerTokenDao);
-		ArgumentVerifier.verifyNotNull(loginAuditsDao);
-		ArgumentVerifier.verifyNotNull(userDao);
-		ArgumentVerifier.verifyNotNull(tokenBearerGenerator);
-		ArgumentVerifier.verifyNotNull(passwordCrypto);
+		verifyNotNull(issuedBearerTokenDao);
+		verifyNotNull(loginAuditsDao);
+		verifyNotNull(userDao);
+		verifyNotNull(tokenBearerGenerator);
+		verifyNotNull(passwordCrypto);
 		this.issuedBearerTokenDao = issuedBearerTokenDao;
 		this.loginAuditsDao = loginAuditsDao;
 		this.userDao = userDao;
@@ -59,7 +61,7 @@ public class LoginService {
 
 	public void registerUser(final UserDisplayEntity userDisplayEntity) {
 		if (userDao.checkIfUserExists(userDisplayEntity.getUserName())) {
-			ExceptionCreator.throwBadRequestException(
+			throwBadRequestException(
 					"The user already exists, please choose a different username: " + userDisplayEntity.getUserName());
 		}
 		final User user = new User();
@@ -94,7 +96,7 @@ public class LoginService {
 		final LoginAudit successAudit = LoginAudit.createInstance(username, AppConstants.LOGIN_AUDIT_FAILED,
 				INVALID_LOGIN, INVALID_LOGIN, Boolean.FALSE);
 		loginAuditsDao.store(successAudit);
-		ExceptionCreator.throwUnauthorizedException("Unauthorized!" + INVALID_LOGIN);
+		throwUnauthorizedException("Unauthorized!" + INVALID_LOGIN);
 
 		// will never reach here
 		return null;

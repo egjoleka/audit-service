@@ -17,8 +17,7 @@ import com.datastax.driver.core.ProtocolVersion;
 import com.datastax.driver.core.QueryOptions;
 import com.datastax.driver.core.SocketOptions;
 
-//CREATE KEYSPACE izettle_service WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};
-
+//The commented lines can be used for a proper production cassandra environment with a cluster with multiple nodes
 public class CassandraUtils {
 
     private static final Logger cLogger = LoggerFactory.getLogger(CassandraUtils.class);
@@ -27,7 +26,7 @@ public class CassandraUtils {
     private static final String CASSANDRA_PASSWORD = "izettle.cassandra.password";
     private static final String CASSANDRA_LOCALDC = "izettle.cassandra.local.datacenter";
 
-    //The commented lines can be used for a proper production cassandra environment with a cluster with multiple nodes
+    
     public static Cluster initCommunicationWithCluster(final Configuration cfg) {
 //        final String[] nodes = cfg.getString(CASSANDRA_NODES).split(" ");
 //        final String username = cfg.getString(CASSANDRA_USER_NAME);

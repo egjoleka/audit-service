@@ -129,12 +129,33 @@ public class LoginServiceTest {
 	
 	@Test(expected = IzettleException.class)
 	public void verifyFailureTestNotMachingPassword() {
-		when(userDao.checkIfUserExists(USERNAME)).thenReturn(Boolean.TRUE);
+		when(userDao.checkIfUserExists(USERNAME)).thenReturn(Boolean.FALSE);
 		ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+		ArgumentCaptor<LoginAudit> loginAuditCapture = ArgumentCaptor.forClass(LoginAudit.class);
 
-		loginService.verifyLoginIn(USERNAME, "sfsdfsdfsdf");
+		loginService.verifyLoginIn(USERNAME, "adfafafafaf");
 
-		Mockito.verify(userDao, Mockito.times(1)).storeUser(userCaptor.capture());
+		
+		
+
+	}
+	
+	@Test
+	public void verifySuccess() {
+		when(userDao.checkIfUserExists(USERNAME)).thenReturn(Boolean.FALSE);
+		ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+		ArgumentCaptor<LoginAudit> loginAuditCapture = ArgumentCaptor.forClass(LoginAudit.class);
+		ArgumentCaptor<IssuedBearerToken> tokenCapture = ArgumentCaptor.forClass(IssuedBearerToken.class);
+
+		loginService.verifyLoginIn(USERNAME, PASSWORD);
+
+		Mockito.verify(issuedBearerTokenDao, Mockito.times(1)).createBearerTokens(tokenCapture.capture());
+		Mockito.verify(loginAuditsDao, Mockito.times(1)).store(loginAuditCapture.capture());
+		assertTrue(userCaptor.getValue().getIsActiveUser());
+		assertEquals(USERNAME, loginAuditCapture.getValue().getUserName());
+		assertEquals(BEARER, loginAuditCapture.getValue().getBearer());
+		assertTrue(!loginAuditCapture.getValue().getIsSucess());
+		assertNotNull(loginAuditCapture.getValue().getRequestTimestamp());
 
 	}
 

@@ -24,7 +24,7 @@ public class UserDisplayEntity {
 	}
 
 	public UserDisplayEntity() {
-
+		//cxf needs it
 	}
 
 	public String getUserName() {
