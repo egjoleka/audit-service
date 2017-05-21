@@ -15,6 +15,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import com.izettle.assignment.BaseTest;
 import com.izettle.assignment.IzettleAssignmentMain;
@@ -23,6 +26,7 @@ import com.izettle.assignment.ddo.BearerTokenDisplayEntity;
 import com.izettle.assignment.ddo.UserDisplayEntity;
 import com.izettle.assignment.entity.LoginAudit;
 
+@RunWith(JUnit4.class)
 public class RestApiIntegrationTest extends BaseTest {
 
 	private static final String PASSWORD_FIELD = "password";
