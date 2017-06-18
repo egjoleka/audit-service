@@ -1,14 +1,20 @@
-<div ng-if="!isValidRequest">
-	<div class="col-sm-6 col-md-4 col-md-offset-4 alert alert-danger text-center alert-dismissible">No data was found for your bearer</div>
-</div>
-<div class="well">
-<select class="selectpicker">
-  <option>TRUE</option>
-  <option>FALSE</option>
-</select>
-</div>
 <div>
+<h3 class=" well">Login Audits</h3>
+<div class="well col-md-12">
 <table tr-ng-grid='' items='audits'>
-        </table>
+<thead>
+        <tr>
+            <th field-name="userName"></th>
+            <th field-name="isSucess"></th>
+            <th field-name="reason"></th>
+            <th field-name="reqTimeUuid"></th>
+            <th field-name="requestTimestamp"></th>
+            <th field-name="clientDeviceType"></th>
+            <th field-name="clientOperatingSystem"></th>
+            <th field-name="clientBrowserInfo"></th>
+            <th field-name="status"> </th>
+        </th></tr>
+    </thead>
+</table>
 </div>
-
+</div>

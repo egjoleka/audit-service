@@ -54,7 +54,7 @@ public class LoginAuditsDao extends AbstractDao {
 
 	public List<LoginAudit> getLoginAuditsByUsernameAndStatus(final String username, final boolean isSuccess) {
 		final Statement statement = getSelectStatement(LOGIN_AUDITS_TABLE).where(eq(USER_NAME, username))
-				.and(eq(IS_SUCCESS, isSuccess));
+				.and(eq(IS_SUCCESS, isSuccess)).setFetchSize(10);
 		final ResultSet res = session.execute(statement);
 		final int totalFound = res.getAvailableWithoutFetching();
 		cLogger.debug("Found total Login Audits: {}", totalFound);
@@ -63,7 +63,11 @@ public class LoginAuditsDao extends AbstractDao {
 			ExceptionCreator.throwBadRequestException("There are no Login Audits for user: " + username);
 		}
 		final List<LoginAudit> loginAudits = new ArrayList<>();
-		final List<Row> rows = res.all();
+		int paginator = 5;
+		if(totalFound<5) {
+			paginator = totalFound;
+		}
+		final List<Row> rows = res.all().subList(0, paginator);
 		rows.stream().forEach(row -> {
 			loginAudits.add(createLoginAuditEntityFromDbResponse(row));
 		});

@@ -68,7 +68,7 @@ public class IssuedBearerTokenDao extends AbstractDao {
 		issuedBearerTokenEntity.setIsValidBearer(row.getBool(IS_VALID_BEARER));
 		issuedBearerTokenEntity.setUserName(row.getString(USER_NAME));
 		issuedBearerTokenEntity.setCreatedTimestamp(getTimestamp(row.getTimestamp(CREATED_TIMESTAMP)));
-		issuedBearerTokenEntity.setCreatedTimestamp(getTimestamp(row.getTimestamp("expiration_timestamp")));
+		issuedBearerTokenEntity.setExpirationTime(getTimestamp(row.getTimestamp("expiration_timestamp")));
 		issuedBearerTokenEntity.setBearerTs(row.getUUID(BEARER_TS));
 		return issuedBearerTokenEntity;
 	}

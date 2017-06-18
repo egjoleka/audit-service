@@ -26,6 +26,7 @@ angular.module('authentication.controllers').controller('loginController',['logi
 		   } else {
 			   $scope.bearerValue = data.bearerToken;
 			   $scope.success = true;
+			   $window.location.href = '#/audits/start?bearer=' + $scope.bearerValue + "&isSuccess=true";
 		   }
 	   })
    }
